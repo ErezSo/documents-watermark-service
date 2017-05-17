@@ -24,4 +24,19 @@ documentRouter.route('/watermark/:documentType/:topic')
     }
   });
 
+documentRouter.route('/status/:documentId')
+  .get((req, res) => {
+    Document.findById(req.params.documentId, (err, document) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      else if (document) {
+        res.json(document);
+      }
+      else {
+        res.status(404).send('No document found');
+      }
+    });
+  });
+
 module.exports = documentRouter;
