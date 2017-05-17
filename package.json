@@ -4,7 +4,6 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "prestart": "babel-node build_scripts/start_message.js",
     "start": "node app.js",
     "test": "mocha --reporter progress ./test_setup.js \"src/**/*.test.js\"",
     "lint": "standard"
@@ -18,11 +17,14 @@
     "babel-preset-latest": "6.16.0",
     "babel-register": "6.16.3",
     "body-parser": "^1.17.1",
-    "chai": "^3.5.0",
     "express": "^4.15.2",
-    "mocha": "^3.3.0",
     "mongoose": "^4.9.9",
     "npm-run-all": "^4.0.2",
     "standard": "^10.0.2"
+  },
+  "devDependencies": {
+    "supertest": "^3.0.0",
+    "mocha": "^3.4.1",
+    "chai": "^3.5.0"
   }
 }
