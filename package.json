@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha --reporter progress ./test_setup.js \"src/**/*.test.js\"",
+    "test": "mocha --reporter progress ./test_setup.js \"routes/**/*.test.js\"",
     "lint": "standard"
   },
   "author": "Erez Sobel",

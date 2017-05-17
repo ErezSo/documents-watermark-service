@@ -1,7 +1,7 @@
 'use strict'
 
 const { expect } = require('chai');
-const documentRouter = require('document_routes');
+const documentRouter = require('./document_routes');
 
 describe('documentRouter', () => {
   describe('First test', () => {
