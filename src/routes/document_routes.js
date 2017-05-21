@@ -5,12 +5,13 @@ const watermarker = require('../watermark_service');
 const documentRouter = express.Router();
 
 // POST
-documentRouter.route('/watermark/:documentType/:topic')
+documentRouter.route('/watermark/:documentType')
   .post((req, res) => {
 
     const document = new Document({
       title: req.body.title,
-      author: req.body.author
+      author: req.body.author,
+      topic: req.body.topic || undefined
     });
 
     if (!req.body.title && !req.body.author && !req.params.documentType) {

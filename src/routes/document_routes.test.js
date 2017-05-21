@@ -10,16 +10,17 @@ describe('documentRouter via app.js', () => {
 
       // Mock HTTP responses
       nock('http://localhost')
-        .post('/watermark/book/science')
+        .post('/watermark/book')
         .reply(200, {
           ticket: '123456789qwerty'
         });
 
       const inputData = {
-        params: '/book/science',
+        params: '/book',
         body: {
           title: 'Bad Science',
-          author: 'Ben Goldcare'
+          author: 'Ben Goldcare',
+          topic: 'science'
         }
       };
 

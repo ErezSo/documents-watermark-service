@@ -7,12 +7,12 @@ describe('watermarker', () => {
   it('Create a new watermark object', () => {
     const inputData = {
       params: {
-        documentType: 'book',
-        topic: 'Science'
+        documentType: 'book'
       },
       bodyVars: {
         title: 'Science book',
-        author: 'Prof. book author'
+        author: 'Prof. book author',
+        topic: 'science'
       }
     }
 
@@ -20,7 +20,7 @@ describe('watermarker', () => {
       content: 'book',
       title: 'Science book',
       author: 'Prof. book author',
-      topic: 'Science'
+      topic: 'science'
     }
 
     return Promise.resolve(watermarker(inputData.params, inputData.bodyVars, 1000)).then(testDataPromise => {

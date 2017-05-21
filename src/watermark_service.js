@@ -11,7 +11,7 @@ const watermarker = (params, bodyVars, timeout = 3000) => {
       if (params.documentType) watermark.content = params.documentType;
       if (bodyVars.title) watermark.title = bodyVars.title;
       if (bodyVars.author) watermark.author = bodyVars.author;
-      if (params.topic) watermark.topic = params.topic;
+      if (bodyVars.topic) watermark.topic = bodyVars.topic;
       resolve(watermark);
     }, timeout);
   })
