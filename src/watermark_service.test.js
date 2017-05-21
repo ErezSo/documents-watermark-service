@@ -23,7 +23,7 @@ describe('watermarker', () => {
       topic: 'Science'
     }
 
-    return Promise.resolve(watermarker(inputData.params, inputData.bodyVars)).then(testDataPromise => {
+    return Promise.resolve(watermarker(inputData.params, inputData.bodyVars, 1000)).then(testDataPromise => {
       expect(testDataPromise).to.eql(expectedData);
     });
   });

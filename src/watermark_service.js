@@ -1,9 +1,10 @@
 /**
  * Create a new watermark object from the provided parameters
- * @param {Object} params 
- * @param {Object} bodyVars 
+ * @param {Object} params - POST url parameters
+ * @param {Object} bodyVars - POST body parameters
+ * @param {Number} timeout - configurable timeout length with default value
  */
-const watermarker = (params, bodyVars) => {
+const watermarker = (params, bodyVars, timeout = 3000) => {
   return new Promise((resolve,reject) => {
     setTimeout(() => {
       const watermark = {};
@@ -12,7 +13,7 @@ const watermarker = (params, bodyVars) => {
       if (bodyVars.author) watermark.author = bodyVars.author;
       if (params.topic) watermark.topic = params.topic;
       resolve(watermark);
-    }, 1000);
+    }, timeout);
   })
 }
 
