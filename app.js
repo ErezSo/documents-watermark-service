@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use('/', documentRouter);
   
 app.get('/', (req, res) => {
-  res.send('Welcome to my API');
+  res.status(200).send('Welcome to my API');
 });
 
 app.listen(port, err => {
@@ -29,3 +29,5 @@ app.listen(port, err => {
     console.log(`Running app on PORT ${port}`);
   }
 });
+
+module.exports = app;
