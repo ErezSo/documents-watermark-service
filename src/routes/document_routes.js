@@ -12,21 +12,25 @@ documentRouter.route('/watermark/:documentType/:topic')
       author: req.body.author
     });
 
-    if (!req.body.title && !req.body.author) {
+    if (!req.body.title && !req.body.author && !req.params.documentType) {
       res.status(400);
       res.send('Title and author are required');
     }
     else {
-      document.save((err) => {
-        if (err) console.log(err);
-      });
-      res.status(201);
-      res.send({ ticket: document._id });
+
+      // Save to POST document
+      Promise.resolve(document.save())
+        .then(document => {
+          res.status(201).send({ ticket: document._id });
+        })
+        .catch(err => {
+          res.status(400).send('Document failed to save')
+          new Error(err);
+        });
 
       // Save the created watermark to the existing DB record
-      return new Promise((resolve, reject) => {
-        resolve(watermarker(req.params, req.body));        
-      }).then(watermark => {
+      Promise.resolve(watermarker(req.params, req.body))
+      .then(watermark => {
         Document.findById(document._id)
         .then(document => {
           document.watermark = watermark;
@@ -37,6 +41,7 @@ documentRouter.route('/watermark/:documentType/:topic')
       .catch(err => new Error('Failed to create the watermark', err));
     }
   });
+
 
 documentRouter.route('/status/:documentId')
   .get((req, res) => {
