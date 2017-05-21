@@ -4,6 +4,7 @@ const watermarker = require('../watermark_service');
 
 const documentRouter = express.Router();
 
+// POST
 documentRouter.route('/watermark/:documentType/:topic')
   .post((req, res) => {
 
@@ -18,7 +19,7 @@ documentRouter.route('/watermark/:documentType/:topic')
     }
     else {
 
-      // Save to POST document
+      // Save document in a new record
       Promise.resolve(document.save())
         .then(document => {
           res.status(201).send({ ticket: document._id });
@@ -42,7 +43,7 @@ documentRouter.route('/watermark/:documentType/:topic')
     }
   });
 
-
+// GET
 documentRouter.route('/status/:documentId')
   .get((req, res) => {
     Document.findById(req.params.documentId, (err, document) => {

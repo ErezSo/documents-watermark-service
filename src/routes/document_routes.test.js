@@ -7,6 +7,8 @@ const request = require('supertest');
 describe('documentRouter via app.js', () => {
   describe('POST request', () => {
     it('should return 200 and ticket id', (done) => {
+
+      // Mock HTTP responses
       nock('http://localhost')
         .post('/watermark/book/science')
         .reply(200, {
@@ -38,6 +40,8 @@ describe('documentRouter via app.js', () => {
 
  describe('GET request', () => {
     it('should return 200 and document record including watermark object', (done) => {
+
+      // Mock HTTP responses      
       nock('http://localhost')
         .get('/status/123456789qwerty')
         .reply(200, {
