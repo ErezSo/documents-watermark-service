@@ -4,7 +4,7 @@
  * @param {Object} bodyVars - POST body parameters
  * @param {Number} timeout - configurable timeout length with default value
  */
-const watermarker = (params, bodyVars, timeout = 3000) => {
+const watermarker = (params, bodyVars, timeout = 1000) => {
   return new Promise((resolve,reject) => {
     setTimeout(() => {
       const watermark = {};
